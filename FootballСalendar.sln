@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballСalendar", "FootballСalendar\FootballСalendar.csproj", "{1C4C9667-5403-4619-800F-45151CCD2628}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C4C9667-5403-4619-800F-45151CCD2628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C4C9667-5403-4619-800F-45151CCD2628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C4C9667-5403-4619-800F-45151CCD2628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C4C9667-5403-4619-800F-45151CCD2628}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4688472C-3A16-43DC-A5E0-2CF32189DA23}
+	EndGlobalSection
+EndGlobal
