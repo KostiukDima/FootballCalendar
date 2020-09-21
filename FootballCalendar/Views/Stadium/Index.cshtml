@@ -1,0 +1,54 @@
+﻿@model List<FootballСalendar.Models.StadiumVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Стадіони</h1>
+
+@if (Model.Count == 0)
+{
+    <br />
+    <h3>Пусто =(</h3>
+    <br />
+    <br />
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Назва стадіону</th>
+                <th>Кількість глядачів</th>
+                <th>Зображення</th>
+                <th>Місто</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Capacity)
+                    </td>
+                    <td>
+                        <img src="@item.Image" width="200" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CityVM.Name)                        
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<a class="btn btn-secondary " asp-area="" asp-controller="Stadium" asp-action="Create">Додати стадіон</a>
