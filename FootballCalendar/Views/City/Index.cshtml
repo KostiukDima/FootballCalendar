@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@await Html.PartialAsync("/Views/Admin/_PartialViews.cshtml")
 <h1>Міста</h1>
 
 @if (Model.Count == 0)
@@ -17,40 +17,42 @@ else
 {
 
 
-<table class="table">
-    <thead>
-        
-        <tr>
-            <th>Назва міста</th>
-            <th>Назва країни</th>
-            <th>Прапор</th>
-            <th></th>
-        </tr>
-        
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table">
+        <thead>
+
             <tr>
-               
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Country.Name)
-                </td>
-                <td>
-                    <img src="@item.Country.Flag" width="50" />
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
+                <th>Назва міста</th>
+                <th>Назва країни</th>
+                <th>Прапор</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Country.Name)
+                    </td>
+                    <td>
+                        <img src="@item.Country.Flag" width="50" />
+                    </td>
+                    <td>
+                        <div class="btn-group d-flex justify-content-end">
+                            <a class="btn btn-secondary" asp-controller="Country" asp-action="Edit" asp-route-id=@item.Id>Редагувати</a>
+
+                            <a class="btn btn-secondary" asp-controller="Country" asp-action="Delete" asp-route-id=@item.Id> Видалити</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 
 <a class="btn btn-secondary " asp-area="" asp-controller="City" asp-action="Create">Додати місто</a>

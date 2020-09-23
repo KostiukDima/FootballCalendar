@@ -1,0 +1,69 @@
+﻿@model List<FootballСalendar.Models.FootballGameVM>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@await Html.PartialAsync("/Views/Admin/_PartialViews.cshtml")
+<h1>Футбольні матчі</h1>
+
+@if (Model.Count == 0)
+{
+    <br />
+    <h3>Пусто =(</h3>
+    <br />
+    <br />
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Домашня команда</th>
+                <th></th>
+                <th>Голи</th>
+                <th>Дата</th>
+                <th>Голи</th>
+                <th></th>
+                <th>Команда Суперник</th>
+                <th></th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    <img src="@item.HomeTeamVM.FootballClubVM.Logo" width="100" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeTeamVM.FootballClubVM.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HomeTeamVM.GoalCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpponentTeamVM.GoalCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OpponentTeamVM.FootballClubVM.Name)
+                </td>
+                <td>
+                    <img src="@item.OpponentTeamVM.FootballClubVM.Logo" width="100" />
+                </td>
+                <td>
+                    <div class="btn-group d-flex justify-content-end">
+                        <a class="btn btn-secondary" asp-controller="Country" asp-action="Edit" asp-route-id=@item.Id>Редагувати</a>
+
+                        <a class="btn btn-secondary" asp-controller="Country" asp-action="Delete" asp-route-id=@item.Id> Видалити</a>
+                    </div>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+<a class="btn btn-secondary " asp-area="" asp-controller="FootballGame" asp-action="Create">Додати матч</a>

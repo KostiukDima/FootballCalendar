@@ -92,11 +92,11 @@ namespace FootballСalendar.Entities
 
             builder.Entity<FootballGame>()
                   .HasOne<HomeTeam>(f => f.HomeTeam).WithOne(h => h.FootballGame)
-                  .HasForeignKey<FootballGame>(f => f.HomeTeamId).HasPrincipalKey<HomeTeam>(h => h.FootballGameId);
+                  .HasForeignKey<FootballGame>(f => f.HomeTeamId);
 
             builder.Entity<FootballGame>()
                  .HasOne<OpponentTeam>(f => f.OpponentTeam).WithOne(o => o.FootballGame)
-                 .HasForeignKey<FootballGame>(f => f.OpponentTeamId).HasPrincipalKey<OpponentTeam>(o => o.FootballGameId);
+                 .HasForeignKey<FootballGame>(f => f.OpponentTeamId);
 
             builder.Entity<FootballClub>()
                   .HasOne<Coach>(f => f.Coach).WithOne(c => c.FootballClub)

@@ -1,8 +1,62 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model List<FootballСalendar.Models.FootballGameVM>
+
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+
+@if (Model.Count == 0)
+{
+    <br />
+    <h3>Пусто =(</h3>
+    <br />
+    <br />
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Домашня команда</th>
+                <th></th>
+                <th>Голи</th>
+                <th>Дата</th>
+                <th>Голи</th>
+                <th></th>
+                <th>Команда Суперник</th>
+                
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.HomeTeamVM.FootballClubVM.Logo" width="100" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HomeTeamVM.FootballClubVM.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HomeTeamVM.GoalCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OpponentTeamVM.GoalCount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OpponentTeamVM.FootballClubVM.Name)
+                    </td>
+                    <td>
+                        <img src="@item.OpponentTeamVM.FootballClubVM.Logo" width="100" />
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+}
